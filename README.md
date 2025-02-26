@@ -31,6 +31,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from sklearn.metrics import mean_absolute_error, mean_squared_error
 
+#obtaining x and y value from csv file
 df=pd.read_csv(r"E:\Desktop\CSE\Introduction To Machine Learning\Ex_2\student_scores.csv")
 print(df.head())
 print(df.tail())
@@ -38,9 +39,12 @@ x=df.iloc[:,:-1].values
 y=df.iloc[:,1].values
 print("x values:",x)
 print("y values:",y)
+
+#spliting dataset for testing and training
 from sklearn.model_selection import train_test_split
 x_train,x_test,y_train,y_test=train_test_split(x,y,test_size=1/3,random_state=0)
 
+#training the model by linear regression
 from sklearn.linear_model import LinearRegression
 regressor=LinearRegression()
 regressor.fit(x_train,y_train)
@@ -63,6 +67,7 @@ plt.xlabel("Hours")
 plt.ylabel("Scores")
 plt.show()
 
+#measuring the error percentage for the model
 mse=mean_squared_error(y_test,y_pred)
 print("MSE =",mse)
 mae=mean_absolute_error(y_test,y_pred)
@@ -73,7 +78,32 @@ print("RMSE =",rmse)
 ```
 
 ## Output:
-![simple linear regression model for predicting the marks scored](sam.png)
+## Head and Tail of CSV File
+
+![1](https://github.com/user-attachments/assets/fd61c673-c569-40d7-80b1-84c3cc50541e)
+
+## Value of X And Y
+
+![2](https://github.com/user-attachments/assets/a7173309-412d-44d5-a983-898c7b14150f)
+
+## Y Prediction And Actual Value
+
+![3](https://github.com/user-attachments/assets/44aff23d-ee54-416f-a901-285205f34c64)
+
+## Training Best-Fit-Line
+
+![4](https://github.com/user-attachments/assets/4fd63747-faa9-4ef3-97c9-85721196f7ef)
+
+## Testing Best-Fit-Line
+
+![5](https://github.com/user-attachments/assets/2402076f-f595-496c-a0e7-e888d40059db)
+
+## Error Percentage
+
+![6](https://github.com/user-attachments/assets/b940a44b-62b3-46df-94ab-2ab2c005a69b)
+
+
+
 
 
 ## Result:
